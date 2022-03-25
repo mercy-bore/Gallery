@@ -3,7 +3,7 @@ from django.http import HttpResponse,Http404
 import datetime as dt
 
 def welcome(request):
-    return HttpResponse('Welcome to My Gallery')
+    return render(request, 'welcome.html')
 
 def display_image(request):
     date = dt.date.today()  
