@@ -18,6 +18,13 @@ def display_image(request):
     return HttpResponse(html)
 
 def past_days_images(request,past_date):
+    try:
+        # Converts data from the string Url
+        date = dt.datetime.strptime(past_date,'%Y-%m-%d').date()
+
+    except ValueError:
+        # Raise 404 error when ValueError is thrown
+        raise Http404()
     # Converts data from the string Url
     date = dt.datetime.strptime(past_date,'%Y-%m-%d').date()
 
