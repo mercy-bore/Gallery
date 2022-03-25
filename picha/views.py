@@ -6,34 +6,20 @@ def welcome(request):
     return render(request, 'welcome.html')
 
 def display_image(request):
-    date = dt.date.today()  
-    html = f'''
-        <html>
-            <body>
-                 <h1> Picture posted on  {date.day}-{date.month}-{date.year}</h1>
-                <h1><img src="https://www.freecodecamp.org/news/content/images/size/w2000/2021/08/chris-ried-ieic5Tq8YMk-unsplash.jpg"</h1>
-            </body>
-        </html>
-            '''
-    return HttpResponse(html)
+    date = dt.date.today()
+    return render(request, 'all-images/todays-images.html', {"date": date,})
 
 def past_days_images(request,past_date):
     try:
         # Converts data from the string Url
-        date = dt.datetime.strptime(past_date,'%Y-%m-%d').date()
+        date = dt.datetime.strptime(past_date, '%Y-%m-%d').date()
 
     except ValueError:
         # Raise 404 error when ValueError is thrown
         raise Http404()
-    # Converts data from the string Url
-    date = dt.datetime.strptime(past_date,'%Y-%m-%d').date()
+        assert False
 
-    day = (date)
-    html = f'''
-        <html>
-            <body>
-                <h1>Pictures for {date.day}-{date.month}-{date.year}</h1>
-            </body>
-        </html>
-            '''
-    return HttpResponse(html)
+    if date == dt.date.today():
+        return redirect(display_image)
+
+    return render(request, 'all-images/past-images.html', {"date": date})
