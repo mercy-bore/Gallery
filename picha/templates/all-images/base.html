@@ -7,7 +7,8 @@
     <title>Jada Gallery - {{title}}</title>
     {% else %}
     <title> Jada Gallery</title>
-    {% endif %} {% block styles %} {% bootstrap_css %} {% endblock %}
+    {% endif %} {% block styles %} {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"> {% endblock %}
 
 </head>
 
