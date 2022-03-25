@@ -32,7 +32,7 @@ def past_days_images(request,past_date):
     html = f'''
         <html>
             <body>
-                <h1>Pictures for {day} {date.day}-{date.month}-{date.year}</h1>
+                <h1>Pictures for {date.day}-{date.month}-{date.year}</h1>
             </body>
         </html>
             '''
