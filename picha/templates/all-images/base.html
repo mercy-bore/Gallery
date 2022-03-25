@@ -7,13 +7,13 @@
     <title>Jada Gallery - {{title}}</title>
     {% else %}
     <title> Jada Gallery</title>
-    {% endif %}
+    {% endif %} {% block styles %} {% bootstrap_css %} {% endblock %}
 
 </head>
 
 <body>
     {% block content %}
-    <h1>Pictures for {{date|date:"l d-F Y"}}</h1>
+    <h1 class='text-center'>Pictures for {{date|date:"l d-F Y"}}</h1>
 
     {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
