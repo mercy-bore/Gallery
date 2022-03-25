@@ -13,11 +13,9 @@
 
 <body>
     {% block content %}
-    <h1 class='text-center'>Pictures for {{date|date:"l d-F Y"}}</h1>
-
-    {% block scripts %}
+    <h1 class='text-center'>Pictures for {{date|date:"l d-F Y"}}</h1> {%endblock%} {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    {% bootstrap_javascript %}{%endblock%}
+    {% bootstrap_javascript %} {% endblock %}
 </body>
 
 </html>
