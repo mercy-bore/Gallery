@@ -28,8 +28,8 @@ class Image(models.Model):
         self.delete()
     @classmethod
     def search_by_name(cls,search_term):
-            image = cls.objects.filter(name__icontains=search_term)
-            return image
+            picha = cls.objects.filter(name__icontains=search_term)
+            return picha
 class Category(models.Model):
     '''
     model to handle category
