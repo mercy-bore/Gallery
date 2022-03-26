@@ -7,7 +7,7 @@ def welcome(request):
 
 def display_image(request):
     date = dt.date.today()
-    return render(request, 'all-images/todays-images.html', {"date": date,})
+    return render(request, 'todays-images.html', {"date": date,})
 
 def past_days_images(request,past_date):
     try:
@@ -22,4 +22,4 @@ def past_days_images(request,past_date):
     if date == dt.date.today():
         return redirect(display_image)
 
-    return render(request, 'all-images/past-images.html', {"date": date})
+    return render(request, 'past-images.html', {"date": date})
