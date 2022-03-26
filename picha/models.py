@@ -4,7 +4,7 @@ class Image(models.Model):
     '''
     model to handle images
     '''
-    image_link = models.ImageField(upload_to='image/',default=1)
+    img = models.ImageField(upload_to='images/',default=1)
     name = models.CharField(max_length =30)
     description = models.TextField(max_length =30)
     category = models.ForeignKey( 'Category', on_delete=models.CASCADE,default=1)
@@ -26,7 +26,10 @@ class Image(models.Model):
         method to delete an image
         '''
         self.delete()
-
+    @classmethod
+    def search_by_name(cls,search_term):
+            image = cls.objects.filter(name__icontains=search_term)
+            return image
 class Category(models.Model):
     '''
     model to handle category

@@ -10,19 +10,17 @@ def gallery(request):
 
 def display_image(request):
     image = Image.objects.all()
-    return render(request,'todays-images.html',{'image':image})
+    return render(request,'all-images.html',{'image':image})
 
-def past_days_images(request,past_date):
-    try:
-        # Converts data from the string Url
-        date = dt.datetime.strptime(past_date, '%Y-%m-%d').date()
+def search_results(request):
 
-    except ValueError:
-        # Raise 404 error when ValueError is thrown
-        raise Http404()
-        assert False
+    if 'image' in request.GET and request.GET["image"]:
+        search_term = request.GET.get("image")
+        searched_image = Image.search_by_name(search_term)
+        message = f"{search_term}"
 
-    if date == dt.date.today():
-        return redirect(display_image)
+        return render(request, 'search.html',{"message":message,"images": searched_image})
 
-    return render(request, 'past-images.html', {"date": date})
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})

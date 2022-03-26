@@ -11,7 +11,7 @@ class ImageTestClass(TestCase):
         self.new_location = Location(city='Nairobi', country='Kenya')
         self.new_location.save_location()
             
-        self.new_picture = Image(image_link='images/py.jpeg', name='Lion', description='jungle', category=self.new_category, location=self.new_location)
+        self.new_picture = Image(img='images/py.jpeg', name='Lion', description='jungle', category=self.new_category, location=self.new_location)
         self.new_picture.save_image()
         
        
