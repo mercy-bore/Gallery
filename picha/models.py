@@ -40,6 +40,20 @@ class Image(models.Model):
         '''
         data = Image.objects.filter(location__city__contains=location)
         return data
+    @classmethod
+    def get_image_by_id(cls, id):
+       
+        retrieved = Image.objects.get(id = id)
+        return retrieved
+    
+    def update_image(self, new_url):
+      
+        try:
+            self.image_link = new_url
+            self.save()
+            return self
+        except self.DoesNotExist:
+            print('Image entered does not exist.Please enter another image.')
 class Category(models.Model):
     '''
     model to handle category
@@ -80,6 +94,17 @@ class Location(models.Model):
         method to delete a location
         '''
         self.delete()
+        
+    @classmethod
+    def update_location(cls, search_term , new_pin):
+      
+        try:
+            to_update = Location.objects.get(country = search_term)
+            to_update.city = new_pin
+            to_update.save()
+            return to_update
+        except Location.DoesNotExist:
+            print('Location that  does not exist.Please enter another location.')
     
 
 
