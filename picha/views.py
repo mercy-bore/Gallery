@@ -1,7 +1,6 @@
-from django.shortcuts import render,redirect
-from django.http import HttpResponse,Http404
-from .models import Image,Category,Location
-import datetime as dt
+from django.shortcuts import render
+from django.http import Http404
+from .models import Image,Category
 
 def gallery(request):
     return render(request, 'gallery.html')
@@ -28,3 +27,7 @@ def image(request,image_id):
     except:
         raise Http404()
     return render(request,"photo.html", {"image":image})
+
+def location(request,pin):
+    images = Image.filter_by_location(pin)
+    return render(request, 'location.html', {'results':images})

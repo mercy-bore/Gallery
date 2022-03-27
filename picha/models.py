@@ -32,6 +32,14 @@ class Image(models.Model):
                 
             # result = cls.objects.filter(category__name__contains=category) #images assoc w/ this cat
             # return result
+            
+    @classmethod
+    def filter_by_location(cls ,location):
+        '''
+        method to retrive images by their locations
+        '''
+        data = Image.objects.filter(location__city__contains=location)
+        return data
 class Category(models.Model):
     '''
     model to handle category
