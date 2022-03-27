@@ -4,23 +4,20 @@ from .models import Image,Category,Location
 import datetime as dt
 
 def gallery(request):
-    category = Category.objects.all()
-    image = Image.objects.all()
-    return render(request, 'gallery.html', {'image':image,'category':category})
+    return render(request, 'gallery.html')
 
 def display_image(request):
+    category = Category.objects.all()
     image = Image.objects.all()
-    return render(request,'all-images.html',{'image':image})
+    return render(request,'all-images.html',{'image':image,'category':category})
 
 def search_results(request):
-
-    
-    if 'image' in request.GET and request.GET["image"]:
-        search_term = request.GET.get("image")
-        searched_images = Image.search_by_name(search_term)
+    if 'category' in request.GET and request.GET["category"]:
+        search_term = request.GET.get("category")
+        results = Image.search_by_category(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"images": searched_images})
+        return render(request, 'search.html',{"message":message,"images": results})
 
     else:
         message = "You haven't searched for any term"
