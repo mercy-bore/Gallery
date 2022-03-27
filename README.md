@@ -2,6 +2,16 @@
  Jada  Gallery
 
 This is a web app with random photos.
+
+## BDD
+A user of the application should be able to:
+
+- View different photos that interest me.
+- Click on a single photo to expand it and also view the details of the photo. The photo details must appear on a modal within the same route as the main page.
+- Search for different categories of photos. (ie. Travel, Food)
+- Copy a link to the photo to share with my friends.
+- View photos based on the location they were taken.
+
 ## Getting Started
 
 To get a copy of the project up and running on your local machine for development and testing purposes, **clone** this repository into a **virtual environment** and install the package manager, **pip**.
