@@ -74,6 +74,18 @@ class Category(models.Model):
         method to delete a category
         '''
         self.delete()
+    def update_category(cls, search_term , new_cat):
+        '''
+        method to update a category
+        '''
+        try:
+            c_update = Category.objects.get(name = search_term)
+            c_update.name = new_cat
+            c_update.save()
+            return c_update
+        except Category.DoesNotExist:
+            print('Category entered does not exist')
+
     
 class Location(models.Model):
     '''
@@ -81,6 +93,7 @@ class Location(models.Model):
     '''
     city = models.CharField(max_length=30)
     country = models.CharField(max_length=30)
+    
     def __str__(self):
         return self.city
     def save_location(self):
@@ -99,10 +112,10 @@ class Location(models.Model):
     def update_location(cls, search_term , new_pin):
       
         try:
-            to_update = Location.objects.get(country = search_term)
-            to_update.city = new_pin
-            to_update.save()
-            return to_update
+            l_update = Location.objects.get(country = search_term)
+            l_update.city = new_pin
+            l_update.save()
+            return l_update
         except Location.DoesNotExist:
             print('Location that  does not exist.Please enter another location.')
     
