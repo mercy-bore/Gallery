@@ -1,7 +1,10 @@
 # Gallery
  Jada  Gallery
+ This is a web app with random photos.
 
-This is a web app with random photos.
+## Authors
+Mercy Bore
+
 
 ## BDD
 A user of the application should be able to:
@@ -40,7 +43,6 @@ Run automated tests for this system
 
 With all environment variables changed to suit your local copy of this repository, deploy the application to [Heroku] to see it live or simply run it locally
   (virtual) $ python3.8 manage.py runserver
-
 
 
 ## License
